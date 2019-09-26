@@ -54,6 +54,26 @@ const waiter2 = () => {
       
 }
 
-waiter();
+async function waiter3() {
+  const time1 = randomTime();
+  const time2 = randomTime();
+  const time3 = randomTime();
+
+  const allOrders = []
+  allOrders.push(orders(time1, menu.hotdog, table[1]))
+  allOrders.push(orders(time2, menu.pizza, table[1]))
+  allOrders.push(orders(time3, menu.hotdog, table[1]))
+
+  try {
+    const result = await Promise.all(allOrders)
+    console.log(result)
+  } catch (error) {
+    console.log(error)
+  }
+  
+}
+
+waiter()
 waiter2()
+waiter3()
 
